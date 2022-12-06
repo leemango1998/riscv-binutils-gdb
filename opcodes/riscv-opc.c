@@ -268,7 +268,43 @@ match_vd_eq_vs1_eq_vs2 (const struct riscv_opcode *op,
 
 const struct riscv_opcode riscv_opcodes[] =
 {
-/* name, xlen, isa, operands, match, mask, match_func, pinfo.  */
+/* name, xlen, isa, operands, match, mask, match_func, pinfo. likai */
+/* lk  */
+{"custom0",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM0, MASK_CUSTOM0, match_opcode, 0 },/* lk  */
+{"custom1",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM1, MASK_CUSTOM1, match_opcode, 0 },/* lk  */
+{"custom2",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM2, MASK_CUSTOM2, match_opcode, 0 },/* lk  */
+{"custom3",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM3, MASK_CUSTOM3, match_opcode, 0 },/* lk  */
+{"custom4",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM4, MASK_CUSTOM4, match_opcode, 0 },/* lk  */
+{"custom5",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM5, MASK_CUSTOM5, match_opcode, 0 },/* lk  */
+{"custom6",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM6, MASK_CUSTOM6, match_opcode, 0 },/* lk  */
+{"custom7",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM7, MASK_CUSTOM7, match_opcode, 0 },/* lk  */
+{"custom8",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM8, MASK_CUSTOM8, match_opcode, 0 },/* lk  */
+{"custom9",    0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM9, MASK_CUSTOM9, match_opcode, 0 },/* lk  */
+{"custom10",   0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM10, MASK_CUSTOM10, match_opcode, 0 },/* lk  */
+{"custom11",   0, INSN_CLASS_I, "d,s,t,b3",       MATCH_CUSTOM11, MASK_CUSTOM11, match_opcode, 0 },/* lk  CQMUL16 */
+{"custom12",   0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM12, MASK_CUSTOM12, match_opcode, 0 },/* lk  */
+{"custom13",   0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM13, MASK_CUSTOM13, match_opcode, 0 },/* lk  */
+{"custom14",   0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM14, MASK_CUSTOM14, match_opcode, 0 },/* lk  */
+{"custom15",   0, INSN_CLASS_I, "d,s,t",       MATCH_CUSTOM15, MASK_CUSTOM15, match_opcode, 0 },/* lk  */
+
+{"custom16",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM16, MASK_CUSTOM16, match_opcode, 0 },/* lk  */
+{"custom17",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM17, MASK_CUSTOM17, match_opcode, 0 },/* lk  */
+{"custom18",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM18, MASK_CUSTOM18, match_opcode, 0 },/* lk  */
+{"custom19",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM19, MASK_CUSTOM19, match_opcode, 0 },/* lk  */
+{"custom20",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM20, MASK_CUSTOM20, match_opcode, 0 },/* lk  */
+{"custom21",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM21, MASK_CUSTOM21, match_opcode, 0 },/* lk  */
+{"custom22",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM22, MASK_CUSTOM22, match_opcode, 0 },/* lk  */
+{"custom23",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM23, MASK_CUSTOM23, match_opcode, 0 },/* lk  */
+{"custom24",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM24, MASK_CUSTOM24, match_opcode, 0 },/* lk  */
+{"custom25",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM25, MASK_CUSTOM25, match_opcode, 0 },/* lk  */
+{"custom26",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM26, MASK_CUSTOM26, match_opcode, 0 },/* lk  */
+{"custom27",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM27, MASK_CUSTOM27, match_opcode, 0 },/* lk  */
+{"custom28",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM28, MASK_CUSTOM28, match_opcode, 0 },/* lk  */
+{"custom29",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM29, MASK_CUSTOM29, match_opcode, 0 },/* lk  */
+{"custom30",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM30, MASK_CUSTOM30, match_opcode, 0 },/* lk  */
+{"custom31",   0, INSN_CLASS_I, "d,s,t,r",     MATCH_CUSTOM31, MASK_CUSTOM31, match_opcode, 0 },/* lk  */
+/* lk  */
+
 {"unimp",       0, INSN_CLASS_C, "",          0, 0xffffU, match_opcode, INSN_ALIAS },
 {"unimp",       0, INSN_CLASS_I, "",          MATCH_CSRRW|(CSR_CYCLE << OP_SH_CSR), 0xffffffffU,  match_opcode, 0 }, /* csrw cycle, x0  */
 {"ebreak",      0, INSN_CLASS_C, "",          MATCH_C_EBREAK, MASK_C_EBREAK, match_opcode, INSN_ALIAS },

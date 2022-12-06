@@ -374,7 +374,20 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	    print (info->stream, "0");
 	  break;
 
-	case 'b':
+	case 'b':	/* CORE-V Specific. likai  */
+	//   if (oparg[1] == '3')
+	//     {
+	//       print (info->stream, "0x%x", ((unsigned) l >> 25));
+	//       ++oparg;
+	//       break;
+	//     }
+	// 	  else 
+	if (oparg[1] == '3')
+	    {
+	      print (info->stream, "%d", ((int) EXTRACT_LK_UIMM5(l)) );
+	      ++oparg;
+	      break;
+	    }
 	case 's':
 	  if ((l & MASK_JALR) == MATCH_JALR)
 	    maybe_print_address (pd, rs1, 0, 0);
@@ -385,6 +398,10 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	  print (info->stream, "%s",
 		 riscv_gpr_names[EXTRACT_OPERAND (RS2, l)]);
 	  break;
+
+	case 'r':
+          print (info->stream, "%s", riscv_gpr_names[EXTRACT_OPERAND (RS3, l)]);
+          break;
 
 	case 'u':
 	  print (info->stream, "0x%x",

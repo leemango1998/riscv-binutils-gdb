@@ -112,6 +112,13 @@ static const char * const riscv_pred_succ[16] =
 #define EXTRACT_RVV_VC_IMM(x) \
   (RV_X(x, 20, 11))
 
+// likai 
+#define EXTRACT_LK_UIMM5(x) (RV_X(x, 27, 5))  
+// 右移25位, 取5bit
+#define ENCODE_LK_UIMM5(x) (RV_X(x, 0, 5) << 27)
+// likai 右移0位,取5bit,左
+//#define EXTRACT_LK_UIMM5(x) (RV_X(x, 25, 5))
+
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
 #define ENCODE_STYPE_IMM(x) \
@@ -354,6 +361,8 @@ static const char * const riscv_pred_succ[16] =
 enum riscv_insn_class
 {
   INSN_CLASS_NONE,
+
+ INSN_CLASS_DSP, 
 
   INSN_CLASS_I,
   INSN_CLASS_C,

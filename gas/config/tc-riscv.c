@@ -1137,6 +1137,13 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	case 'A': break; /* Macro operand, must be symbol.  */
 	case 'B': break; /* Macro operand, must be symbol or constant.  */
 	case 'I': break; /* Macro operand, must be constant.  */
+  case 'b': /* CORE-V Specific. likai */
+    if (oparg[1] == '3')
+	    {
+	      used_bits |= ENCODE_LK_UIMM5(-1U);
+	      ++oparg; break;
+	    }
+	  break;
 	case 'D': /* RD, floating point.  */
 	case 'd': USE_BITS (OP_MASK_RD, OP_SH_RD); break;
 	case 'y': USE_BITS (OP_MASK_BS,	OP_SH_BS); break;
@@ -2943,6 +2950,23 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 	        break;
 	      *imm_reloc = BFD_RELOC_32;
 	      asarg = expr_end;
+	      continue;
+
+      case 'b':
+	      if (oparg[1] == '3')
+          {
+            my_getExpression (imm_expr, asarg);
+            check_absolute_expr (ip, imm_expr, FALSE);
+            asarg = expr_end;
+            if (imm_expr->X_add_number<0 || imm_expr->X_add_number>31) break;
+            ip->insn_opcode |= ENCODE_LK_UIMM5 (imm_expr->X_add_number);
+            ++oparg;
+          }
+        else
+          {
+            my_getExpression (imm_expr, asarg);
+            asarg = expr_end;
+          }
 	      continue;
 
 	    case 'B':
